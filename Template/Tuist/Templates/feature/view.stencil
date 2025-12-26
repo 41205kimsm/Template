@@ -1,0 +1,24 @@
+import SwiftUI
+import Architecture
+
+
+struct {{ name }}View: View {
+    @ObservedObject var viewModel: {{ name }}ViewModel
+
+    var body: some View {
+        VStack {
+            Text("{{ name }} View")
+        }
+        .onAppear {
+            viewModel.onAppear()
+        }
+    }
+}
+
+struct {{ name }}View_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewModel = {{ name }}ViewModel(router: {{ name }}Router())
+        {{ name }}View(viewModel: viewModel)
+    }
+}
+

@@ -1,0 +1,32 @@
+import Foundation
+import Network
+
+public protocol {{name}}ServiceProtocol: ServiceProtocol {
+    
+}
+
+public final class {{name}}Service: Service, {{name}}ServiceProtocol {
+    public override init(network: any NetworkProtocol) {
+        super.init(network: network)
+    }
+
+}
+
+public struct {{name}}Request: APIRequest {
+    typealias Response = {{name}}ResponseDTO
+    
+    var url: URL?
+    var method: APIMethod
+    var parameters: QueryItems?
+    var headers: APIHeaders?
+    var isMultiPart: Bool
+    
+    func init(){
+        
+    }
+}
+
+
+struct {{name}}ResponseDTO: Decodable {
+    
+}

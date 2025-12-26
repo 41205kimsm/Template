@@ -1,0 +1,28 @@
+import UIKit
+import Architecture
+//Todo: 하위Module import
+
+
+@MainActor
+public protocol {{name}}RouterProtocol: RouterProtocol {
+    //Todo: attach/detach 하위 모듈 함수
+}
+
+
+@MainActor
+public final class {{name}}Router: Router<{{name}}ViewModelProtocol, {{name}}ViewControllerProtocol>, {{name}}RouterProtocol {
+    
+    
+    public var dependencies: {{name}}DependencyProtocol
+    //Todo: 하위 모듈factory
+    //private var 하위모듈Factory: 하위ModuleFactoryProtocol?
+    
+    init(viewModel: {{name}}ViewModelProtocol,
+         viewController: {{name}}ViewControllerProtocol,
+         dependencies: {{name}}DependencyProtocol
+    ) {
+        self.dependencies = dependencies
+        super.init(viewModel: viewModel,
+                   viewController: viewController)
+    }        
+}

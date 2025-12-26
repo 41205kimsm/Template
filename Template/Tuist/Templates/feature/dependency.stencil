@@ -1,0 +1,16 @@
+import Architecture
+import Network
+
+public protocol {{name}}DependencyProtocol: DependencyProtocol {
+    var network: NetworkProtocol { get }
+}
+
+
+public class {{name}}Dependencies: DependencyBox<{{name}}DependencyProtocol>, {{name}}DependencyProtocol {
+    public var network: any NetworkProtocol
+        
+    public override init(dependency: any {{name}}DependencyProtocol) {
+        self.network = dependency.network
+        super.init(dependency: dependency)
+    }
+}

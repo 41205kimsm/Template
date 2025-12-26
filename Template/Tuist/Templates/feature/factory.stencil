@@ -1,0 +1,31 @@
+import Architecture
+import {{name}}Service
+import Network
+
+
+public protocol {{name}}ModuleFactoryProtocol: ModuleFactoryProtocol {
+    @MainActor func build() -> RouterProtocol
+
+}
+
+public final class {{name}}ModuleFactory: ModuleFactory<{{name}}DependencyProtocol>, {{name}}ModuleFactoryProtocol {
+    
+    public override init(dependency: {{name}}DependencyProtocol) {
+        super.init(dependency: dependency)
+    }
+    
+    public func build() -> any RouterProtocol {
+        let vm = {{name}}ViewModel(service: {{name}}Service(network: dependency.network))
+        
+        //Todo: UIKit, SwiftUI 화면에 맞는 코드 하나만 사용
+        let vc = SwiftUIViewController {
+            {{name}}View(viewModel: vm)
+        }
+        let vc = {{name}}ViewController(viewModel: vm)
+        
+        let router = {{name}}Router(viewModel: vm, viewController: vc, dependencies: dependency)
+        vm.router = router
+        return router
+    }
+}
+

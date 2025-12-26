@@ -1,0 +1,19 @@
+import Architecture
+import {{name}}Service
+
+public protocol {{name}}ViewModelProtocol: ViewModelProtocol  {
+    init (service: {{name}}ServiceProtocol)
+}
+
+
+//Todo: SwiftUI 화면이면, ObservableObject 채택 필수
+public final class {{name}}ViewModel: ViewModel, {{name}}ViewModelProtocol {
+    
+    var router: {{name}}RouterProtocol?
+    var service: {{name}}ServiceProtocol
+    
+    public init(service: {{name}}ServiceProtocol){
+        self.service = service
+    }
+    
+}

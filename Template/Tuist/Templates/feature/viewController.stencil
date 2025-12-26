@@ -1,0 +1,19 @@
+import UIKit
+import Architecture
+
+
+public protocol {{name}}ViewControllerProtocol: ViewControllerProtocol {}
+
+
+public final class {{name}}ViewController: ViewController, {{name}}ViewControllerProtocol {
+
+    public override init(viewModel: any ViewModelProtocol) {
+        super.init(viewModel: viewModel)
+    }
+    
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
